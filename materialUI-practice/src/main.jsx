@@ -9,6 +9,7 @@ import './index.css'
 // you can also create new variants with create themes by creating new key:value pair in whatever component you want look at typography
 const theme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
       main: blueGrey[500]
     },
