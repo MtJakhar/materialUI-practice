@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup } from "@mui/material"
+import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup, ButtonGroup } from "@mui/material"
 import { pink, green, red } from '@mui/material/colors'
 import { styled } from "@mui/material/styles"
 import { Stack } from '@mui/system'
 
-import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth } from '@mui/icons-material'
+import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth, Delete } from '@mui/icons-material'
 import foodImage from "./assets/images/seafood.jpeg"
 
 function App() {
@@ -1133,7 +1133,144 @@ function App() {
 
 
           <Typography><Link href='https://mui.com/material-ui/api/avatar/'>Avatar API</Link></Typography>
+        </Box>
+        <Box>
+          <Typography variant='h3'>Button</Typography>
+          <Typography>Buttons allow users to take actions with a single tap</Typography>
+          <Typography variant='h5'>Basic Button</Typography>
+          <Typography>Three variants text(default), contained, Outlined</Typography>
+          <Stack direction='row' m={1}>
+            <Button sx={{m:1}}>Text</Button>
+            <Button variant='contained' sx={{m:1}}>Contained</Button>
+            <Button variant='outlined' sx={{m:1}}>Outlined</Button>
+          </Stack>
+          <Typography variant='h5'>Handling Clicks</Typography>
+          <Typography>All components accept onClick handler which can be applied to the root element</Typography>
+          <Button variant='contained' onClick={() => {
+            alert('clicked')
+          }}>Click Me</Button>
+          <Typography variant='h5'>Color</Typography>
+          <Typography>You can add color to the buttons via the color prop, the main ones are primary, secondary, success, warning, etc.. you can also add custom colors</Typography>
+          <Button variant='outlined' color='secondary'>Secondary</Button>
+          <Button variant='contained' sx={{ m:1 ,bgcolor: red[800] }}>Red</Button>
+          <Button variant='contained' color='success'>Success</Button>
+          <Typography variant='h5'>Sizes</Typography>
+          <Box sx={{ '& button': { m:1 } }}>
+            <div>
+              <Button size='small'>small</Button>
+              <Button size='medium'>medium</Button>
+              <Button size='large'>large</Button>
+            </div>
+            <div>
+              <Button variant='outlined' size='small'>small</Button>
+              <Button variant='outlined' size='medium'>medium</Button>
+              <Button variant='outlined' size='large'>large</Button>
+            </div>
+            <div>
+              <Button variant='contained' size='small'>small</Button>
+              <Button variant='contained' size='medium'>medium</Button>
+              <Button variant='contained' size='large'>large</Button>
+            </div>
+          </Box>
+          <Typography></Typography>
+          <Typography variant='h5'>Buttons with icons and label</Typography>
+          <Typography>You can add icons to buttons inorder to make ui look better</Typography>
+          <Button variant='outlined' startIcon={<Delete />}>Delete</Button>
+          <Button variant='outlined' endIcon={<Send />}>Send</Button>
 
+          <Typography variant='h5'>Icon Button</Typography>
+          <Typography>Icon Buttons are found in apps and toolbars</Typography>
+          <IconButton aria-label='delete'><Delete/></IconButton>
+          <IconButton aria-label='delete' disabled color='primary'><Delete/></IconButton>
+          <IconButton color='secondary' aria-label='inbox'><Inbox /></IconButton>
+          <IconButton color='success' aria-label='favorite'><Favorite/></IconButton>
+
+        </Box>
+        <Box>
+          <Typography variant='h3'>ButtonGroup</Typography>
+          <Typography>Used to group related buttons</Typography>
+
+          <Typography variant='h5'>Basic Button group</Typography>
+          <Typography>The buttons can be grouped together by wrapping them in the ButtonGroup component.</Typography>
+
+          <ButtonGroup variant='contained'>
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+
+          <Typography variant='h5'>Button Variants</Typography>
+          <Typography>All the standard button variants are supported</Typography>
+          <Stack direction='column' spacing={1}>
+            <ButtonGroup variant='outlined'>
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup variant='text'>
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+          </Stack>
+
+          <Typography variant='h5'>Sizes and Colors</Typography>
+          <Typography>The size and color props can be used to control the appearance of the button group</Typography>
+          <Stack direction='column' spacing={1}>
+            <ButtonGroup size='small' variant='outlined'>
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup color='secondary' variant='outlined'>
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup size='large' variant='outlined'>
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+          </Stack>
+
+          <Typography variant='h5'>Vertical Group</Typography>
+          <Typography>The button group can be displayed vertically using the orientation prop</Typography>
+          <Box sx={{ display: 'flex', '& > *': { m:1} }}>
+            <ButtonGroup orientation='vertical'>
+              <Button>one</Button>
+              <Button>two</Button>
+              <Button>three</Button>
+            </ButtonGroup>
+            <ButtonGroup variant='contained' orientation='vertical'>
+              <Button>one</Button>
+              <Button>two</Button>
+              <Button>three</Button>
+            </ButtonGroup>
+            <ButtonGroup variant='text' orientation='vertical'>
+              <Button>one</Button>
+              <Button>two</Button>
+              <Button>three</Button>
+            </ButtonGroup>
+          </Box>
+
+          <Typography variant='h5'>Split Button</Typography>
+          <Typography>ButtonGroup can be used to create a split button. The split button can be used to create a dropdown menu next to the button</Typography>
+          <Link href='https://mui.com/material-ui/react-button-group/#split-button'>Split Button</Link>
+
+          <Typography variant='h5'>Disabled Elevation</Typography>
+          <Typography>You can remove the elevation with the disableElevation prop</Typography>
+          <ButtonGroup
+            disableElevation
+            variant="contained"
+            aria-label="Disabled elevation buttons"
+          >
+            <Button>One</Button>
+            <Button>Two</Button>
+          </ButtonGroup>
+
+          <Typography variant='h5'>API</Typography>
+          <Link href='https://mui.com/material-ui/api/button-group/'>API ButtonGroup</Link>
         </Box>
 
       
