@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup, ButtonGroup, Grid } from "@mui/material"
+import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup, ButtonGroup, Grid, Tooltip } from "@mui/material"
 import { pink, green, red } from '@mui/material/colors'
 import { styled } from "@mui/material/styles"
 import { Stack } from '@mui/system'
@@ -17,6 +17,19 @@ import FormControlLabelPlacement from './FormControlLabelPlacement'
 import ErrorRadios from './ErrorRadios'
 import ControlledRadioButtonsGroup from './ControlledRadioButtonsGroup'
 import RowRadioButtonsGroup from './RowRadioButtonsGroup'
+import BasicTable from './BasicTable'
+import DataTable from './DataTable'
+import DenseTable from './DenseTable'
+import EnhancedTable from './EnhancedTable'
+import CustomizedTables from './CustomizedTables'
+import StickyHeadTable from './StickyHeadTable'
+import ColumnGroupingTable from './ColumnGroupingTable'
+import CollapsibleTable from './CollapsibleTable'
+import SpanningTable from './SpanningTable'
+import ReactVirtualizedTable from './ReactVirtualizedTable'
+import PositionedTooltips from './PositionedTooltips'
+
+
 function App() {
   const [count, setCount] = useState(0)
   const [changeButton, setChangeButton] = useState(false)
@@ -1338,6 +1351,81 @@ function App() {
           <Typography variant='h5'>Show Error</Typography>
           <Typography>In general, radio buttons should have a value selected by default. If this is not the case, you can display an error if no value is selected when the form is submitted:</Typography>
           <ErrorRadios />
+        </Box>
+
+        <Box>
+          <Typography variant='h3'>Tables</Typography>
+          <Typography variant='h5'>Basic Table</Typography>
+          <Typography>Simple Table</Typography>
+          <BasicTable />
+
+
+          <Typography variant='h5'>Data Table</Typography>
+          <Typography>The Table component has a close mapping to the native table elements. This constraint makes building rich data tables challenging.
+          The DataGrid component is designed for use-cases that are focused on handling large amounts of tabular data. While it comes with a more rigid structure, in exchange, you gain more powerful features.</Typography>
+          <DataTable />
+
+          <Typography variant='h5'>Dense table</Typography>
+          <Typography>A simple example of a dense table with no frills</Typography>
+          <DenseTable />
+
+          
+          <Typography variant='h5'>Sorting and selecting</Typography>
+          <Typography>This example demonstrates the use of Checkbox and clickable rows for selection, with a custom Toolbar. It uses the TableSortLabel component to help style column headings.
+
+          The Table has been given a fixed width to demonstrate horizontal scrolling. In order to prevent the pagination controls from scrolling, the TablePagination component is used outside of the Table.</Typography>
+          <EnhancedTable />
+
+          <Typography variant='h5'>Customization</Typography>
+          <Typography>Here is an example of customizing the component. </Typography>
+          <CustomizedTables />
+
+          <Typography variant='h5'>Sticky Header</Typography>
+          <Typography>Here is an example of a table with scrollable rows and fixed column headers. It leverages the stickyHeader prop.</Typography>
+          <StickyHeadTable />
+
+          <Typography variant='h5'>Column Grouping</Typography>
+          <Typography>You can group column headers by rendering multiple table rows inside a table head:</Typography>
+          <ColumnGroupingTable />
+
+          <Typography variant='h5'>Collapsible table</Typography>
+          <Typography>An example of a table with expandable rows, revealing more information. It utilizes the Collapse component</Typography>
+          <CollapsibleTable />
+
+          <Typography variant='h5'>Spanning table</Typography>
+          <Typography>A simple example with spanning rows & columns.</Typography>
+          <SpanningTable />
+
+          <Typography variant='h5'>Virtualized table</Typography>
+          <Typography>It renders 200 rows and can easily handle more. Virtualization helps with performance issues. Meaning it only loads data that is needed, rather than loading everything at once, makes for faster renders</Typography>
+          <ReactVirtualizedTable />
+        </Box>
+        <Box>
+          <Typography variant='h3'>Tool Tip</Typography>
+
+          <Typography variant='h5'>Basic ToolTip</Typography>
+          <Typography>Tooltips display informative text when users hover over, focus on, or tap an element. Tooltip takes the prop title, which gives the text of tool tip and another prop placement is defaulted to bottom. Also note the title prop is a node, you can put just about anything in there including entire tables, emojis, pictures, etc..
+          </Typography>
+
+          <Tooltip title="Delete">
+            <IconButton>
+              <Delete />
+            </IconButton>
+          </Tooltip>
+
+          <Typography variant='h5'>Positioned ToolTips</Typography>
+          <Typography>The Tooltip has 12 placement choices. They don't have directional arrows; instead, they rely on motion emanating from the source to convey direction.</Typography>
+          <PositionedTooltips />
+
+          <Typography variant='h5'>Arrow tooltips</Typography>
+          <Typography>You can use the arrow prop to give your tooltip an arrow indicating which element it refers to.</Typography>
+          <Tooltip title="Add" arrow>
+            <Button>Arrow</Button>
+          </Tooltip>
+
+          <Typography variant='h4'>More ToolTips</Typography>
+          <Typography>ToolTips in my opinion are very simple interactions, and should be studied only when that tool tip is needed, the documentation seems to be very extensive for a very simple animation. Below is a Link which will take you to the MUI site with the complete tooltip documentation</Typography>
+          <Link href='https://mui.com/material-ui/react-tooltip/'>MUI ToolTip</Link>
         </Box>
 
       
