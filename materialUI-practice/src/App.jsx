@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup, ButtonGroup, Grid, Tooltip } from "@mui/material"
+import { Button, Typography, ThemeProvider, createTheme, Paper, CssBaseline, Link, IconButton, CircularProgress, Fab, Box, LinearProgress, Rating, Card, CardContent, CardActions, CardMedia, CardHeader, Avatar, Collapse, Badge, Skeleton, List, ListItem, ListItemButton, Divider, ListItemText, ListSubheader,ListItemAvatar, Checkbox, Switch, AvatarGroup, ButtonGroup, Grid, Tooltip, Chip, FormControlLabel, FormGroup } from "@mui/material"
 import { pink, green, red } from '@mui/material/colors'
 import { styled } from "@mui/material/styles"
 import { Stack } from '@mui/system'
@@ -8,7 +8,7 @@ import { Stack } from '@mui/system'
 import TransferList from './TransferList'
 import EnhancedTransferList from './EnhancedTransferList'
 
-import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth, Delete } from '@mui/icons-material'
+import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth, Delete, FavoriteBorder, BookOutlined, Book, IndeterminateCheckBox } from '@mui/icons-material'
 import foodImage from "./assets/images/seafood.jpeg"
 import RadioButtons from './RadioButtons'
 import SizeRadioButtons from './sizeRadioButtons'
@@ -28,7 +28,9 @@ import CollapsibleTable from './CollapsibleTable'
 import SpanningTable from './SpanningTable'
 import ReactVirtualizedTable from './ReactVirtualizedTable'
 import PositionedTooltips from './PositionedTooltips'
-
+import DividerText from './DividerText'
+import VerticalDividerText from './VerticalDividerText'
+import IndeterminateCheckbox from './indeterminateCheckbox'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -262,14 +264,12 @@ function App() {
     },
   }));
 
-  // List Transfer
-  function not(a, b) {
-    return a.filter((value) => b.indexOf(value) === -1);
-  }
-  
-  function intersection(a, b) {
-    return a.filter((value) => b.indexOf(value) !== -1);
-  }
+  // CheckBox
+  const [checkedu, setCheckedu] = useState(true);
+
+  const handleChange = (event) => {
+    setCheckedu(event.target.checked);
+  };
 
   return (
     <div>
@@ -512,7 +512,7 @@ function App() {
             <Paper variant="outlined" square />
           </Box>
         </div>
-        <hr/>
+        <Divider/>
         <div>
           <Typography variant='h3'>Rating</Typography>
           <Typography>Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own. In order to use rating you must import the component from MUI and</Typography>
@@ -645,8 +645,8 @@ function App() {
           <Typography><Link href='https://mui.com/material-ui/api/card-header/'>CardHeader</Link></Typography>
           <Typography><Link href='https://mui.com/material-ui/api/card-media/'>CardMedia</Link></Typography>
           <Typography><Link href='https://mui.com/material-ui/api/collapse/'>Collapse</Link></Typography>
-          <hr/>
         </div>
+        <Divider/>
         <Box>
           <Typography variant='h3'>Box</Typography>
           <Typography>The Box component serves as a wrapper component for most of the CSS utility needs. Box has very few <Link href='https://mui.com/material-ui/api/box/'>props</Link></Typography>
@@ -697,7 +697,7 @@ function App() {
         >
           <Mail />
         </Badge>
-        <hr/>
+        <Divider />
         <Box>
           <Typography variant='h3'>Skeleton</Typography>
           <Typography>Display a placeholder preview of your content before the data gets loaded to reduce load-time frustration. Its use case is that hte component is designed to be used directly in your components.</Typography>
@@ -730,6 +730,7 @@ function App() {
             height={118}
           />
         </Box>
+        <Divider />
         <Box>
           <Typography variant='h3'>Lists</Typography>
           <Typography>Lists are a continuous group of text or images. They are composed of items containing primary and supplemental actions, which are represented by icons and text.</Typography>
@@ -1352,7 +1353,7 @@ function App() {
           <Typography>In general, radio buttons should have a value selected by default. If this is not the case, you can display an error if no value is selected when the form is submitted:</Typography>
           <ErrorRadios />
         </Box>
-
+        <Divider />
         <Box>
           <Typography variant='h3'>Tables</Typography>
           <Typography variant='h5'>Basic Table</Typography>
@@ -1400,6 +1401,7 @@ function App() {
           <Typography>It renders 200 rows and can easily handle more. Virtualization helps with performance issues. Meaning it only loads data that is needed, rather than loading everything at once, makes for faster renders</Typography>
           <ReactVirtualizedTable />
         </Box>
+        <Divider />
         <Box>
           <Typography variant='h3'>Tool Tip</Typography>
 
@@ -1427,6 +1429,229 @@ function App() {
           <Typography>ToolTips in my opinion are very simple interactions, and should be studied only when that tool tip is needed, the documentation seems to be very extensive for a very simple animation. Below is a Link which will take you to the MUI site with the complete tooltip documentation</Typography>
           <Link href='https://mui.com/material-ui/react-tooltip/'>MUI ToolTip</Link>
         </Box>
+        <Divider />
+        <Box>
+          <Typography variant='h3'>Divider</Typography>
+          <Typography>A divider is a thin line that groups content in lists and layouts</Typography>
+          <Typography variant='h5'>List Dividers</Typography>
+          <Typography>The divider renders as an hr by default. You can save rendering this DOM element by using the divider prop on the ListItem component</Typography>
+          <Typography variant='h5'>HTML specification</Typography>
+          <Typography variant='h6'>Inset dividers</Typography>
+          <List>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <Image />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Photos" secondary="Jan 9, 2023" />
+            </ListItem>
+            <Divider variant='inset' component="li" />
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <Facebook />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="FaceBook" secondary="Jan 10, 2023" />
+            </ListItem>
+            <Divider variant='inset' component="li" />
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <Favorite />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="FaceBook" secondary="Jan 10, 2023" />
+            </ListItem>
+          </List>
+          <Typography variant='h6'>Subheader dividers</Typography>
+          <List >
+            <ListItem>
+              <ListItemText primary="Photos" secondary="Jan 10,1234" />
+            </ListItem>
+            <Divider component='li' />
+            <li>
+              <Typography>
+                Divider
+              </Typography>
+            </li>
+            <ListItem>
+              <ListItemText primary="Work" secondary="Jan 7,2014" />
+            </ListItem>
+            <Divider component="li" variant='inset' />
+            <li>
+              <Typography>
+                Leisure
+              </Typography>
+            </li>
+          </List>
+
+          <Typography variant='h6'>Middle Divider</Typography>
+          <Box sx={{ widyh: '100%', maxWidth:360, bgcolor: 'Background.paper' }}>
+            <Box sx={{ my: 3, mx:2 }}>
+              <Grid container alignItems='center'>
+                <Grid item xs>
+                  <Typography gutterBottom variant='h4' component="div">
+                    Toothbrush
+                  </Typography>
+                </Grid>
+                <Grid Item>
+                  <Typography gutterBottom variant='h6' component='div'>
+                    $4.50
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Typography color='text.secondary' variant='body2'>
+                30% of Proto-germanic vocabulary is not Indo-european but is instead derived from semitic
+              </Typography>
+            </Box>
+            <Divider variant='middle' />
+            <Box sx={{ m:2 }}>
+              <Typography gutterBottom variant='body1'>
+                Select type
+              </Typography>
+              <Stack direction='row' spacing='1'>
+                <Chip label='Extra Soft' />
+                <Chip color='primary' label='Soft' />
+                <Chip label='Medium' />
+                <Chip label='Hard' />
+              </Stack>
+            </Box>
+            <Box sx={{ mt: 3, ml: 1, mb: 1 }}>
+              <Button>Add to cart</Button>
+            </Box>
+          </Box>
+
+          <Typography variant='h5'>Dividers with text</Typography>
+          <Typography>You can also render a divider with conetent</Typography>
+          <DividerText />
+
+          <Typography variant='h5'>Divider Vertical</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', width:'fit-content'}}>
+            <Facebook />
+            <Instagram />
+            <YouTube />
+            <Divider orientation='vertical' flexItem />
+            <Favorite />
+            <Image />
+          </Box>
+          <Typography variant='h5'>Vertical variant middle</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', width:'fit-content'}}>
+            <Facebook />
+            <Instagram />
+            <YouTube />
+            <Divider orientation='vertical' variant="middle" flexItem />
+            <Favorite />
+            <Image />
+          </Box>
+          <Typography variant='h5'>Vertical Divider with Text</Typography>
+          <VerticalDividerText />
+        </Box>
+        <Divider />
+        <Box>
+          <Typography variant='h3'>Typography</Typography>
+          <Typography>typography to present your design and content as clearly and efficiently as possible.</Typography>
+
+          <Typography variant='h5'>Component</Typography>
+          <Box sx={{ width: '100%', maxWidth: 500 }}>
+            <Typography variant="h1" gutterBottom>
+              h1. Heading
+            </Typography>
+            <Typography variant="h2" gutterBottom>
+              h2. Heading
+            </Typography>
+            <Typography variant="h3" gutterBottom>
+              h3. Heading
+            </Typography>
+            <Typography variant="h4" gutterBottom>
+              h4. Heading
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              h5. Heading
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              h6. Heading
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              blanditiis tenetur
+            </Typography>
+            <Typography variant="subtitle2" gutterBottom>
+              subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              blanditiis tenetur
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
+              neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
+              quasi quidem quibusdam.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
+              neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
+              quasi quidem quibusdam.
+            </Typography>
+            <Typography variant="button" display="block" gutterBottom>
+              button text
+            </Typography>
+            <Typography variant="caption" display="block" gutterBottom>
+              caption text
+            </Typography>
+            <Typography variant="overline" display="block" gutterBottom>
+              overline text
+            </Typography>
+          </Box>
+
+          <Typography variant='h5'></Typography>
+          <Typography></Typography>
+          <Typography variant='h5'></Typography>
+          <Typography></Typography>
+          <Typography variant='h5'></Typography>
+          <Typography></Typography>
+          <Typography variant='h5'></Typography>
+          <Typography></Typography>
+          <Typography variant='h5'></Typography>
+          <Typography></Typography>
+        </Box>
+        <Divider />
+        <Box >
+          <Typography variant='h3'>Checkbox</Typography>
+          <Typography>Checkboxes allow the user to select one or more items from a set.</Typography>
+          <Box>
+            <Checkbox defaultChecked />
+            <Checkbox />
+            <Checkbox disabled />
+            <Checkbox disabled checked />
+          </Box>
+          <Typography variant='h5'>Label</Typography>
+          <Typography>You can provide a label to the checkbox thanks to the FormControlLabel component</Typography>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox defaultChecked />} label='label'/>
+            <FormControlLabel disbaled control={<Checkbox />} label='Disabled'/>
+          </FormGroup>
+
+          <Typography variant='h5'>Icon/Color</Typography>
+          <Typography>You can you various icons instead of default checkbox, you must use the icon prop for initial uncheck version, and checkedIcon for checkedIcon version. Use the color prop to add colors</Typography>
+          <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+          <Checkbox icon={<BookOutlined />} checkedIcon={<Book />} />
+
+          <Checkbox color='success' icon={<BookOutlined />} checkedIcon={<Book />} />
+          <Checkbox color='secondary' icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+
+
+          <Typography variant='h5'>Controlled</Typography>
+          <Typography>You can control the checkbox with the checked and onchange props. </Typography>
+          <Checkbox checked={checkedu} onChange={handleChange}/>
+          
+
+          <Typography variant='h5'>Indeterminate Checkbox</Typography>
+          <Typography>A checkbox input can only have two states in a form: checked or unchecked. It either submits its value or doesn't. Visually, there are three states a checkbox can be in: checked, unchecked, or indeterminate.</Typography>
+          <IndeterminateCheckBox />
+
+        </Box>
+
 
       
       </CssBaseline>
