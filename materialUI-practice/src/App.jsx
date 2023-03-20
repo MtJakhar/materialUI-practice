@@ -8,7 +8,7 @@ import { Stack } from '@mui/system'
 import TransferList from './TransferList'
 import EnhancedTransferList from './EnhancedTransferList'
 
-import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth, Delete, FavoriteBorder, BookOutlined, Book, IndeterminateCheckBox } from '@mui/icons-material'
+import { Facebook, Instagram, YouTube, Check, Save, ExpandMore, Favorite, Share, MoreVert, Mail, Inbox, Drafts, Send, ExpandLess, StarBorder, Image, Work, BeachAccess, Comment, Wifi, Bluetooth, Delete, FavoriteBorder, BookOutlined, Book } from '@mui/icons-material'
 import foodImage from "./assets/images/seafood.jpeg"
 import RadioButtons from './RadioButtons'
 import SizeRadioButtons from './sizeRadioButtons'
@@ -31,6 +31,7 @@ import PositionedTooltips from './PositionedTooltips'
 import DividerText from './DividerText'
 import VerticalDividerText from './VerticalDividerText'
 import IndeterminateCheckbox from './indeterminateCheckbox'
+import SimpleBackdrop from './SimpleBackdrop'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -1648,12 +1649,52 @@ function App() {
 
           <Typography variant='h5'>Indeterminate Checkbox</Typography>
           <Typography>A checkbox input can only have two states in a form: checked or unchecked. It either submits its value or doesn't. Visually, there are three states a checkbox can be in: checked, unchecked, or indeterminate.</Typography>
-          <IndeterminateCheckBox />
-
+          <IndeterminateCheckbox />
         </Box>
-
-
-      
+        <Divider />
+        <Box>
+          <Typography variant='h3'>Backdrop</Typography>
+          <Typography>The backdrop component adds a dimmed layer over your application, below is an example of just that. The backdrop takes two props the open and onclick, both are states which are to be create by the developer</Typography>
+          <SimpleBackdrop />
+        </Box>
+        <Box>
+          <Typography variant='h3'>Links</Typography>
+          <Typography>Link is built upon the typography component, which means that you can use typography props on it. Below is an example of it</Typography>
+          <Link href='https://mui.com/material-ui/react-link/'>Link to Mui link page</Link>
+          <Typography variant='h5'>Underline</Typography>
+          <Typography>an underline prop can be used to set the underline behavior, the props can be as follows none, hover, and always. always is the default.</Typography>
+          <Link href="#" underline="none">
+            {'underline="none"'}
+          </Link>
+          <Link href="#" underline="hover">
+            {'underline="hover"'}
+          </Link>
+          <Link href="#" underline="always">
+            {'underline="always"'}
+          </Link>
+          <Typography>When you links to navigate page to page it is better to use default react routers vs mui links, The react routers have history stored within them </Typography>
+        </Box>
+        <Box>
+          <Typography variant='h3'>Grid</Typography>
+          <Typography>grid creates responsive layout that adapts to screensize and orientation. The Mui grid layout is a 12 column grid</Typography>
+          <Typography>grid has two main props the container and the Item. An grid item must be within a grid container. Grid item is the default grid prop. THe Grid container can take an additional prop of spacing, which created uniform margins between grid items without taking additional column space. with out spacing the grid items will not have margins and will look squished together. spacing number uses conventional mui spacing rule of 1:4px. </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={8}>
+                <Paper>xs=8</Paper>
+              </Grid>
+              <Grid item xs={4}>
+                <Paper>xs=4</Paper>
+              </Grid>
+              <Grid item xs={4}>
+                <Paper>xs=4</Paper>
+              </Grid>
+              <Grid item xs={8}>
+                <Paper>xs=8</Paper>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>     
       </CssBaseline>
     </div>
 
